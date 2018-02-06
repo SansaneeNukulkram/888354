@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+
+    <script>
+    function Search(){
+        var txt = document.getElementById('txt').value;
+        var Searching = document.getElementById('search').value;
+        var check = document.querySelector('input[name="pick"]:checked').value;
+        var Result = "";
+        if(check == 'Y'){
+            Result = txt.match(new RegExp(Searching,'g')).length;
+            // console.log(Result);
+            
+        }else if(check == 'N'){
+            Result = txt.match(new RegExp(Searching,'gi')).length;
+            // console.log(Result);
+        }
+        
+        document.getElementById('resultant').innerHTML = "Result for Search :" + Result;
+    }
+    </script>
+
+</head>
+<body>
+    <h2>Ex2-Search String Non Sensitive Case</h2>
+    <hr>
+    <div class="form-group">
+        <label >Text Input: </label>
+        <textarea name="txt" id="txt" cols="30" rows="5"></textarea>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label >Sensitive Case: </label>
+        <label class="radio-inline">
+            <input type="radio" name="pick" value="Y">Yes
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="pick" value="N">No
+        </label>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>Search</label>
+        <input type="text" name="search" id="search">
+    </div>
+    <br>
+
+    <button onclick="Search()">search</button>
+    <p id="resultant"></p>
+</body>
